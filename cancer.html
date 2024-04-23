@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prediction</title>
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+     integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+     
+     <!-- Font Awesome Link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Link css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- logo -->
+    <link rel="icon" href="{{ url_for('static', filename='cancer.jpeg') }}">
+</head>
+<body>
+     <!-- === Header start === -->
+     <header>
+        <a href="{{url_for('index')}}" class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" title="Logo"></a>
+        <div id="menu-bar" class="fas fa-hamburger"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('diabetes') }}">Diabetes</a></li>
+                <li><a href="{{ url_for('heart') }}">Heart</a></li>
+                <li><a href="{{ url_for('liver') }}">Liver</a></li>
+                <li><a href="{{ url_for('cancer') }}">Cancer</a></li>
+                <li><a href="{{ url_for('kidney') }}">Kidney</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- === Header End === -->
+    <!-- ==== Home Image ==== -->
+   <img class="image2" src="{{ url_for('static', filename='cancer.jpeg') }}" alt="diabetes">
+   <span class="title">Cancer Prediction</span>
+
+   <div class="card">
+    <form action="{{ url_for('predict') }}" method="POST">
+        <input class="form-input" type="number" name="radius_mean" placeholder="Radius Mean (5-30)" min="5" max="30" step="0.01" required><br>
+        <input class="form-input" type="number" name="texture_mean" placeholder="Texture Mean (5-45)" min="5" max="45" step="0.01" required><br>
+        <input class="form-input" type="number" name="perimeter_mean" placeholder="Perimeter Mean (40-200)" min="40" max="200" step="0.01" required><br>
+        <input class="form-input" type="number" name="area_mean" placeholder="Area Mean (100-2600)" min="100" max="2600" step="0.01" required><br>
+        <input class="form-input" type="number" name="smoothness_mean" placeholder="Smoothness Mean (0-0.2)" min="0" max="0.2" step="0.0001" required><br>
+        <input class="form-input" type="number" name="compactness_mean" placeholder="Compactness Mean (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concavity_mean" placeholder="Concavity Mean (0-1)" min="0" max="1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concave_points_mean" placeholder="Concave Points Mean (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="symmetry_mean" placeholder="Symmetry Mean (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="fractal_dimension_mean" placeholder="Fractal Dimension Mean (0-0.1)" min="0" max="0.1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="radius_se" placeholder="Radius SE (0-5)" min="0" max="5" step="0.01" required><br>
+        <input class="form-input" type="number" name="perimeter_se" placeholder="Perimeter SE (0.5-30)" min="0.5" max="30" step="0.01" required><br>
+        <input class="form-input" type="number" name="area_se" placeholder="Area SE (5-600)" min="5" max="600" step="0.01" required><br>
+        <input class="form-input" type="number" name="smoothness_se" placeholder="Smoothness SE (0-0.1)" min="0" max="0.1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="compactness_se" placeholder="Compactness SE (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concavity_se" placeholder="Concavity SE (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concave_points_se" placeholder="Concave Points SE (0-0.1)" min="0" max="0.1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="symmetry_se" placeholder="Symmetry SE (0-0.1)" min="0" max="0.1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="fractal_dimension_se" placeholder="Fractal Dimension SE (0-0.1)" min="0" max="0.1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="radius_worst" placeholder="Radius Worst (5-40)" min="5" max="40" step="0.01" required><br>
+        <input class="form-input" type="number" name="texture_worst" placeholder="Texture Worst (10-60)" min="10" max="60" step="0.01" required><br>
+        <input class="form-input" type="number" name="perimeter_worst" placeholder="Perimeter Worst (40-300)" min="40" max="300" step="0.01" required><br>
+        <input class="form-input" type="number" name="area_worst" placeholder="Area Worst (100-4500)" min="100" max="4500" step="0.01" required><br>
+        <input class="form-input" type="number" name="smoothness_worst" placeholder="Smoothness Worst (0-1)" min="0" max="1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="compactness_worst" placeholder="Compactness Worst (0-5)" min="0" max="5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concavity_worst" placeholder="Concavity Worst (0-5)" min="0" max="5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="concave_points_worst" placeholder="Concave Points Worst (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+        <input class="form-input" type="number" name="symmetry_worst" placeholder="Symmetry Worst (0-1)" min="0" max="1" step="0.0001" required><br>
+        <input class="form-input" type="number" name="fractal_dimension_worst" placeholder="Fractal Dimension Worst (0-0.5)" min="0" max="0.5" step="0.0001" required><br>
+
+        <input type="submit" class="my-cta-button" value="Predict">
+    </form>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+    <p>Developed by Sujay, Manoj, Suresh</p>
+</div>
+<!-- Jquery Link -->
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>
