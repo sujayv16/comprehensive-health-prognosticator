@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- logo -->
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
+
+    <style>
+        /* CSS for Contact Us page */
+        .contact {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .content_contact {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .member {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .member img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .member h4 {
+            margin-bottom: 10px;
+        }
+
+        .member p {
+            margin-bottom: 5px;
+        }
+
+        header {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            text-align: center;
+        }
+
+        .navbar ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .navbar ul li a:hover {
+            color: #555;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- === Header start === -->
+    <header>
+        <a href="{{url_for('index')}}" class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"
+                title="Logo"></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('diabetes') }}">Diabetes</a></li>
+                <li><a href="{{ url_for('heart') }}">Heart</a></li>
+                <li><a href="{{ url_for('liver') }}">Liver</a></li>
+                <li><a href="{{ url_for('cancer') }}">Cancer</a></li>
+                <li><a href="{{ url_for('kidney') }}">Kidney</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li> <!-- Added Contact Us link -->
+
+            </ul>
+        </nav>
+    </header>
+    <!-- === Header End === -->
+
+    <!-- === Contact Us Start === -->
+    <section class="contact">
+        <div class="content_contact">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+                <div class="member">
+                    <img src="{{ url_for('static', filename='sujay.jpg') }}" alt="Sujay">
+                    <h4>Viswanadhapalli Sujay</h4>
+                    <p>Email: b22cs063@iitj.ac.in</p>
+                    <p>Phone: +91 9705712990</p>
+                    <p>Instagram: <a href="https://www.instagram.com/btwits_sujay?igsh=MW1pa3BybnJjeXBidg%3D%3D&utm_source=qr">@btwits_sujay</a></p>
+                </div>
+                <div class="member">
+                    <img src="{{ url_for('static', filename='suresh.jpg') }}" alt="Suresh">
+                    <h4>Malothu Suresh</h4>
+                    <p>Email: b22cs031@iitj.ac.in</p>
+                    <p>Phone: +91 9381056458</p>
+                    <p>Instagram: <a href="https://www.instagram.com/suresh_naik_24?igsh=cjJ5NnkwcDNzOWM2">@suresh_naik_24</a></p>
+                </div>
+                <div class="member">
+                    <img src="{{ url_for('static', filename='manoj.jpg') }}" alt="Manoj">
+                    <h4>Yerra Nithin Manoj</h4>
+                    <p>Email: b22cs066@iitj.ac.in</p>
+                    <p>Phone: +91 7842874323</p>
+                    <p>Instagram: <a href="https://www.instagram.com/nithinmanoj_777?igsh=cXVzbWx2YjgwbWFj">@nithinmanoj_777</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === Contact Us End === -->
+
+    <!-- Footer section starts -->
+    <div class="footer">
+        <p>Developed by Sujay, Manoj, Suresh</p>
+    </div>
+    <!-- Footer section ends -->
+
+</body>
+
+</html>

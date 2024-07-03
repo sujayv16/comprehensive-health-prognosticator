@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+     integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+     
+     <!-- Font Awesome Link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Link css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- logo -->
+    <link rel="icon" href="{{ url_for('static', filename='heart.jpeg') }}">
+</head>
+<body>
+     <!-- === Header start === -->
+     <header>
+        <a href="{{url_for('index')}}" class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" title="Logo"></a>
+        <div id="menu-bar" class="fas fa-hamburger"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('diabetes') }}">Diabetes</a></li>
+                <li><a href="{{ url_for('heart') }}">Heart</a></li>
+                <li><a href="{{ url_for('liver') }}">Liver</a></li>
+                <li><a href="{{ url_for('cancer') }}">Cancer</a></li>
+                <li><a href="{{ url_for('kidney') }}">Kidney</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li> <!-- Added Contact Us link -->
+            </ul>
+        </nav>
+    </header>
+    <!-- === Header End === -->
+    <!-- ==== Home Image ==== -->
+    <img class="image2" src="{{ url_for('static', filename='heart.jpeg') }}" alt="diabetes">
+    <span class="title">Heart Disease Prediction</span>
+
+    <div class="card">
+        <form action="{{ url_for('predict') }}" method="POST">
+            <input class="form-input" type="number" name="age" placeholder="Age eg: 37" min="1" max="100" required><br>
+            <select class="form-input" name="sex" required>
+                <option value="">Sex</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+            <select class="form-input" name="cp" required>
+                <option value="">Chest pain type</option>
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+                <option value="3">Type 3</option>
+            </select><br>
+            <input class="form-input" type="number" name="trestbps" placeholder="Resting blood pressure in mm Hg eg: 130" min="80" max="200" required><br>
+            <input class="form-input" type="number" name="chol" placeholder="Serum cholestoral in mg/dl eg: 250" min="120" max="600" required><br>
+            <select class="form-input" name="fbs" required>
+                <option value="">Fasting blood sugar 120 mg/dl</option>
+                <option value="1">True</option>
+                <option value="0">False</option>
+            </select><br>
+            <select class="form-input" name="restecg" required>
+                <option value="">Resting electrocardiographic results</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select><br>
+            <input class="form-input" type="number" name="thalach" placeholder="Maximum heart rate achieved eg: 187" min="50" max="200" required><br>
+            <select class="form-input" name="exang" required>
+                <option value="">Exercise induced angina</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <input class="form-input" type="number" name="oldpeak" placeholder="ST depression induced by exercise relative to rest eg: 3.5" step="0.1" min="0.5" max="5" required><br>
+            <select class="form-input" name="slope" required>
+                <option value="">The slope of the peak exercise ST segment</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select><br>
+            <select class="form-input" name="ca" required>
+                <option value="">Number of major vessels colored by flourosopy</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select><br>
+            <select class="form-input" name="thal" required>
+                <option value="">Thal</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select><br>
+            <input type="submit" class="my-cta-button" value="Predict">
+        </form>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <div class="footer">
+        <p>Developed by Sujay, Manoj, Suresh</p>
+    </div>
+    <!-- Jquery Link -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
